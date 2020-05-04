@@ -1,22 +1,19 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+// 引入路由, 如果是 index.js， 可以省略 绝对路径
+import movieRouter from './movie'
+import cinemaRouter from './cinema'
+import mineRouter from './mine'
 
 Vue.use(VueRouter)
 
   const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home
-  },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+  movieRouter,
+  cinemaRouter,
+  mineRouter,
+  { // 默认路由，重定向到 movie
+    path: '/*',
+    redirect: '/movie'
   }
 ]
 
