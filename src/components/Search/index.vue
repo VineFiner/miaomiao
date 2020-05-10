@@ -35,6 +35,7 @@
 <script>
 export default {
     name : 'Search',
+    // 这里是数据
     data(){
         return {
             message : '',
@@ -42,19 +43,25 @@ export default {
         }
     },
     methods : {
+        // 百度获得的 取消请求
         cancelRequest(){
             if(typeof this.source ==='function'){
                 this.source('终止请求')
             }
         }
     },
+    // 这里是观察
     watch : {
         message(newVal){
             var that = this;
             var cityId = this.$store.state.city.id;
+            // 百度 axios 终止多次请求
             this.cancelRequest();
+            // 这里是网络请求
             this.axios.get('/api/searchList?cityId='+ cityId +'&kw='+newVal,{
+                // 这里是取消的 token
                 cancelToken: new this.axios.CancelToken(function(c){
+                    console.log(这里是调试测试);
                     that.source = c;
                 })
             }).then((res)=>{

@@ -16,6 +16,7 @@
                     </div>
                 </li> -->
                 <li class="pullDown">{{ pullDownMsg }}</li>
+                <!-- 这里是循环 -->
                 <li v-for="item in movieList" :key="item.id">
                     <div class="pic_show" @tap="handleToDetail(item.id)"><img :src="item.img | setWH('128.180')"></div>
                     <div class="info_list">
@@ -39,6 +40,7 @@
 
 export default {
     name : 'NowPlaying',
+    // 这里是数据
     data(){
         return {
             movieList : [],
