@@ -51,6 +51,7 @@
         </div>
         <div class="city_index">
             <ul>
+                <!-- 这里是循环 -->
                 <li v-for="(item,index) in cityList" :key="item.index" @touchstart="handleToIndex(index)">{{ item.index }}</li>
             </ul>
         </div>
@@ -147,6 +148,7 @@ export default {
             };
 
         },
+        // 触摸事件
         handleToIndex(index){
             var h2 = this.$refs.city_sort.getElementsByTagName('h2');
             //this.$refs.city_sort.parentNode.scrollTop = h2[index].offsetTop;
